@@ -1,19 +1,42 @@
 # imports
 import numpy as np
 import io
+import pandas as pd
+import networkx as nkx
+import matplotlib
+import matplotlib.pyplot as plt
+import pandas as pd
+import math
+
+tastes = ['item', 'sweet', 'salty', 'bitter', 'sour', 'umami', 'astringency']
+
+
+def plot_to_file(adj_graph):
+
+    for_plot = io.open('graph.csv', 'a', encoding='utf-8')
+    for_plot.write(','.join(str(i) for i in range(1, 101)))
+    for index, i in enumerate(adj_graph):
+        for_plot.write('\n'+str(index)+","+','.join(str(j) for j in i))
+    for_plot.close()
+    # return adj_graph
+
+
+def plot_show():
+    input_data = pd.read_csv('graph.csv', index_col=0)
+    # print(input_data)
+    G = nkx.DiGraph(input_data.values)
+    nkx.draw(G, node_size=10, width=0.1, arrows=False)
+    # plt.savefig("Plotting_samples.pdf")
+    plt.show()
+
 
 # data set reader
-
-
-def plot_them()
-
-
 def read_dataset(dataset_name='dataset.csv'):
     dataset_ref = open(dataset_name, 'r')
     return dataset_ref.readlines()
 
 
-#
+# calculates mahatten distance between two vectors
 def mahatten_cal(node_1, node_2, size=6):
     node_1 = list(map(float, node_1.split(',')))[1:]
     node_2 = list(map(float, node_2.split(',')))[1:]
@@ -71,6 +94,16 @@ def dataset_avg(sums):
     return (max(sums)+min(sums))/2
 
 
+# for user orders
+def mean_all(dataset_name='userOrders.csv'):
+    user_mean_cluster = []
+    data_frame = pd.read_csv(dataset_name)
+    for taste in tastes:
+        temp = data_frame[taste].to_list()
+        user_mean_cluster.append((math.fsum(temp))/len(temp))
+    return user_mean_cluster
+
+
 # intilisations
 dataset_ref = read_dataset(dataset_name='dataset.csv')
 sum_dataset = dataset_sum_row(dataset_ref, size=100)
@@ -82,7 +115,7 @@ mahatten_distance_cutoff = avg if avg < mean else mean
 # print(mahatten_distance_cutoff)
 
 # avilable tastes
-tastes = ['item', 'sweet', 'salty', 'bitter', 'sour', 'umami', 'astringency']
+
 
 closed_ele = []
 open_ele = []
@@ -90,9 +123,12 @@ distance_between_ele = 1
 
 # creates a connected adjency graph shape(100,100) accessed by [99][99]
 adj_graph = create_graph_adj(dataset_ref=dataset_ref, arr_size=6, size=100)
+for i in range(0, 100):
+    adj_graph[i][i] = 0
 
-for_plot = io.open('graph.csv', 'a', encoding='utf-8')
-for_plot.write(','.join(str(i) for i in range(1, 101)))
-for index, i in enumerate(adj_graph):
-    for_plot.write('\n'+str(index)+","+','.join(str(j) for j in i))
-for_plot.close()
+user_orders_ref = read_dataset(dataset_name='userOrders.csv')  # plot_show()
+print(user_orders_ref[1])
+# plot_to_file(adj_graph)
+temp = mean_all(dataset_name='userOrders.csv')
+print(temp)
+print(math.fsum(temp[1:])/6.0)
