@@ -1,7 +1,11 @@
 # imports
 import numpy as np
+import io
 
 # data set reader
+
+
+def plot_them()
 
 
 def read_dataset(dataset_name='dataset.csv'):
@@ -86,3 +90,9 @@ distance_between_ele = 1
 
 # creates a connected adjency graph shape(100,100) accessed by [99][99]
 adj_graph = create_graph_adj(dataset_ref=dataset_ref, arr_size=6, size=100)
+
+for_plot = io.open('graph.csv', 'a', encoding='utf-8')
+for_plot.write(','.join(str(i) for i in range(1, 101)))
+for index, i in enumerate(adj_graph):
+    for_plot.write('\n'+str(index)+","+','.join(str(j) for j in i))
+for_plot.close()
