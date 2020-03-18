@@ -1,7 +1,7 @@
 import random
 import io
 dataset = io.open('dataset.csv', 'a', encoding='utf-8')
-dataset.write('item,sweet,salty,bitter,sour,Umami')
+dataset.write('item,sweet,salty,bitter,sour,umami,astringency')
 for iter_var in range(0, 100):
     row = [random.random() for i in range(6)]
     row_sum = sum(row)
