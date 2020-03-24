@@ -9,12 +9,10 @@ import pandas as pd
 import math
 import os
 from datetime import datetime
-import json
 
 
 # avilable tastes
 tastes = ['item', 'sweet', 'salty', 'bitter', 'sour', 'umami', 'astringency']
-
 
 
 def plot_to_file(adj_graph):
@@ -126,20 +124,17 @@ def best_node_to_start(adj_graph):
     return number_of_ones
 
 # adj matrix to lst converter
-def graph_to_list():
-    df=pd.read_csv('graph.csv',index_col=0)
-    file_tmp=io.open('graph_list.csv','w')
-    dict_temp={}
-    for i in range(100):
-        temp=df.iloc[i,:].to_list()
-        temp=[index+1 for index,val in enumerate(temp) if val==1]
-        #print(temp)
-        dict_temp[i+1]=temp
-        #break
-    file_tmp.write(json.dumps(dict_temp))
-    file_tmp.close()
-    return dict_temp
 
+
+def matrix_to_list(matrix):
+    graph = {}
+    for i, node in enumerate(matrix):
+        adj = []
+        for j, connected in enumerate(node):
+            if connected:
+                adj.append(j)
+        graph[i] = adj
+    return graph
 
 # basic bfs with limit (cunstomized version)
 
@@ -169,7 +164,7 @@ def node_dist_cal(user_mean_sum, dataset_ref, indexes):
         for j in range(7):
             sum += abs(temp[j]-user_mean_sum[j])
         sums_index.append(sum)
-
+    
     return sums_index
 
 
@@ -198,12 +193,12 @@ user_mean_sum = mean_all(dataset_name='userOrders.csv')
 #returns best node haing maximum connections
 node_num = best_node_to_start(adj_graph)
 
-
 node_ones_count = best_node_to_start(adj_graph)
 node_to_start = node_ones_count.index(max(node_ones_count))
 
-graph_lst=graph_to_list()
-index_to_find = graph_lst[node_to_start]
+
+adj_lst = matrix_to_list(adj_graph)
+index_to_find = adj_lst[node_to_start]
 
 
 #calculates distance from all nodes connected to best node and picks one
@@ -212,10 +207,9 @@ node_to_start = index_to_find[temp.index(max(temp))]
 
 
 
-
 # predition
 date_time_str= str(datetime.now())
-user_taste_matched_items = bfs(graph_to_list(), node_to_start,limit=20)
+user_taste_matched_items = bfs(adj_lst, node_to_start,limit=20)
 file_to_show_user = io.open('user menu.csv', 'a', encoding='utf-8')
 file_to_show_user.write("\n"+date_time_str+"\n")
 file_to_show_user.write('item,sweet,salty,bitter,sour,umami,astringency\n')
