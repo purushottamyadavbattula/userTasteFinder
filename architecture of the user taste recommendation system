@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2020-03-26T14:25:34.597Z" agent="Mozilla/5.0 (X11; CrOS x86_64 12739.105.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.158 Safari/537.36" etag="m675qqozsTINVIwxbfWE" version="12.9.3" type="github">
+<mxfile host="app.diagrams.net" modified="2020-03-26T14:38:30.917Z" agent="Mozilla/5.0 (X11; CrOS x86_64 12739.105.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.158 Safari/537.36" etag="UKoaYzdFyX6dJH8SeK8z" version="12.9.3" type="github">
   <diagram id="TVPy69pHFlq8zDc743bg" name="Page-1">
     <mxGraphModel dx="1038" dy="619" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -14,14 +14,23 @@
           <mxGeometry x="160" y="160" width="120" height="40" as="geometry" />
         </mxCell>
         <mxCell id="ms1JhIm3ge-jE2QTxHOl-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="ms1JhIm3ge-jE2QTxHOl-2" target="ms1JhIm3ge-jE2QTxHOl-4">
-          <mxGeometry relative="1" as="geometry" />
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="234" y="260" />
+            </Array>
+          </mxGeometry>
         </mxCell>
         <mxCell id="ms1JhIm3ge-jE2QTxHOl-2" value="mean" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="30" y="240" width="120" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="ms1JhIm3ge-jE2QTxHOl-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="ms1JhIm3ge-jE2QTxHOl-3">
+        <mxCell id="ms1JhIm3ge-jE2QTxHOl-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="ms1JhIm3ge-jE2QTxHOl-3" target="ms1JhIm3ge-jE2QTxHOl-4">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="220" y="340" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="230" y="260" />
+              <mxPoint x="230" y="340" />
+              <mxPoint x="234" y="340" />
+            </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="ms1JhIm3ge-jE2QTxHOl-3" value="average" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
@@ -86,6 +95,12 @@
         <mxCell id="ms1JhIm3ge-jE2QTxHOl-39" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="ms1JhIm3ge-jE2QTxHOl-29" target="ms1JhIm3ge-jE2QTxHOl-19">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
+        <mxCell id="ms1JhIm3ge-jE2QTxHOl-42" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="ms1JhIm3ge-jE2QTxHOl-57" target="ms1JhIm3ge-jE2QTxHOl-41">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ms1JhIm3ge-jE2QTxHOl-56" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="ms1JhIm3ge-jE2QTxHOl-29" target="ms1JhIm3ge-jE2QTxHOl-54">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="ms1JhIm3ge-jE2QTxHOl-29" value="increment i" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="290" y="615" width="80" height="80" as="geometry" />
         </mxCell>
@@ -94,6 +109,42 @@
         </mxCell>
         <mxCell id="ms1JhIm3ge-jE2QTxHOl-36" value="No" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="570" y="730" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="ms1JhIm3ge-jE2QTxHOl-47" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="ms1JhIm3ge-jE2QTxHOl-41" target="ms1JhIm3ge-jE2QTxHOl-44">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ms1JhIm3ge-jE2QTxHOl-41" value="Find best node to which is node with maximum edges" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="115" y="862" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ms1JhIm3ge-jE2QTxHOl-43" value="On completing loop" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="219.5" y="608" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="ms1JhIm3ge-jE2QTxHOl-49" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="ms1JhIm3ge-jE2QTxHOl-44" target="ms1JhIm3ge-jE2QTxHOl-48">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ms1JhIm3ge-jE2QTxHOl-44" value="Start customized A* to find best relevant node" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="287" y="862" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ms1JhIm3ge-jE2QTxHOl-53" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="ms1JhIm3ge-jE2QTxHOl-48" target="ms1JhIm3ge-jE2QTxHOl-52">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ms1JhIm3ge-jE2QTxHOl-48" value="start customized BFS from the node found by customized A*" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="460" y="861" width="120" height="62" as="geometry" />
+        </mxCell>
+        <mxCell id="ms1JhIm3ge-jE2QTxHOl-52" value="Throw all the items found by customized&lt;br&gt;BFS&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="630" y="862" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ms1JhIm3ge-jE2QTxHOl-54" value="Take all user previous orders dataset" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="115" y="680" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ms1JhIm3ge-jE2QTxHOl-57" value="calculate mean of individual taste to create data point to run A*" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="111.5" y="771" width="127.5" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ms1JhIm3ge-jE2QTxHOl-58" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="ms1JhIm3ge-jE2QTxHOl-54" target="ms1JhIm3ge-jE2QTxHOl-57">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="175" y="740" as="sourcePoint" />
+            <mxPoint x="175" y="845" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>
