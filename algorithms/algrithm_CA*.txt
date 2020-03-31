@@ -1,3 +1,5 @@
+Customised_A*
+==============================================
 Algorithm Customised_A*(start,end):
     smallest_distance <- infinity
     node_to_return <- NONE
@@ -28,6 +30,7 @@ Algorithm Customised_A*(start,end):
                         g(m) <- g(n) + k(n,m)
                         f(m) <- g(m) + h(m)
                         PropagateImprovement(m)
+        node_to_return <- n
 return node_to_return
 
 PropagateImprovement(m)
@@ -39,6 +42,31 @@ PropagateImprovement(m)
                     g(s) <- newGvalue
                     if s in closed
                         then PropagateImprovement(s)
+===========================================================
+
+customised Bfs
+===========================================================
+Algorithm customised Bfs:
+
+def bfs(graph_list, v,limit=10):
+    count=0
+    all = []
+    Q = []
+    Q.append(v)
+    while Q != []:
+        v = Q.pop(0)
+        all.append(v)
+        count+=1
+        if(count>=limit):
+            return all
+        for n in graph[v]:
+            if n not in Q and n not in all:
+                Q.append(n)
+    return all
+===========================================================
+
+formulea:
+    https://docs.google.com/document/d/1iRIBdMKyLiqq7v9Bvp_vro13gxLV9Hdqt_4bLDXa5tg/edit?usp=sharing
 
 
     
