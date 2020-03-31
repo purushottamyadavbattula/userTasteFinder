@@ -1,0 +1,44 @@
+Algorithm Customised_A*(start,end):
+    smallest_distance <- infinity
+    node_to_return <- NONE
+	open <- List(start)
+	f(start) <- h(start)
+	parent(start) <- NIL
+	closed<- {}
+	while open is not EMPTY
+	 do
+        Remove node n from open such that f(n) has lowest value
+        Add n to closed
+        If n == end
+            then return n
+        neighbours <- Children(n)
+        for each m in neighbours
+            do switch
+                case m not in open AND m not in closed
+                    Add m to open
+                    parent(m) <- n
+                    g(m) <- g(n) + k(n,m)
+                    f(m) <- g(m) + h(m)
+                case m in open
+                    then parent(m) <- n
+                        g(m) <- g(n) + k(n,m)
+                        f(m) <- g(m) + h(m)
+                case m in closed
+                    then parent(m) <- n
+                        g(m) <- g(n) + k(n,m)
+                        f(m) <- g(m) + h(m)
+                        PropagateImprovement(m)
+return node_to_return
+
+PropagateImprovement(m)
+    neighbours <- Children(m)
+    for each s in neighbours
+        do newGvalue <- g(m) + k(m,s)
+            if newGvalue < g(s)
+                then parent(s) <- m
+                    g(s) <- newGvalue
+                    if s in closed
+                        then PropagateImprovement(s)
+
+
+    

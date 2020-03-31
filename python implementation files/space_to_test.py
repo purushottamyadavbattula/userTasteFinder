@@ -1,15 +1,18 @@
 import pandas as pd
 import json
 import io
+
 def best_node_to_start():
-    df = pd.read_csv('graph.csv', index_col=0)
+    df = pd.read_csv('../csv_files/graph.csv', index_col=0)
     number_of_ones = []
     for i in range(1, 101):
         number_of_ones.append((df.loc[i, :].to_list()).count(1))
     return number_of_ones
+
+
 def graph_to_list():
-    df=pd.read_csv('graph.csv',index_col=0)
-    file_tmp=io.open('graph_list.csv','w')
+    df=pd.read_csv('../csv_files/graph.csv',index_col=0)
+    file_tmp=io.open('../csv_files/graph_list.csv','w')
     dict_temp={}
     for i in range(100):
         temp=df.iloc[i,:].to_list()

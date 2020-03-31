@@ -1,6 +1,6 @@
 import random
 import io
-dataset = io.open('userOrders.csv', 'a', encoding='utf-8')
+dataset = io.open('../csv_files/userOrders.csv', 'a', encoding='utf-8')
 dataset.write('item,sweet,salty,bitter,sour,umami,astringency')
 for iter_var in range(0, 10):
     row = [random.random() for i in range(6)]

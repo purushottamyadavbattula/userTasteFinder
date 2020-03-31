@@ -18,11 +18,11 @@ tastes = ['item', 'sweet', 'salty', 'bitter', 'sour', 'umami', 'astringency']
 
 
 def plot_to_file(adj_graph):
-    if(os.stat('graph.csv').st_size==0):
-        for_plot = io.open('graph.csv', 'a', encoding='utf-8')
+    if(os.stat('../csv_files/graph.csv').st_size==0):
+        for_plot = io.open('../csv_files/graph.csv', 'a', encoding='utf-8')
     else:
-        for_plot = io.open('graph.csv', 'w', encoding='utf-8').close()
-        for_plot = io.open('graph.csv', 'a', encoding='utf-8')
+        for_plot = io.open('../csv_files/graph.csv', 'w', encoding='utf-8').close()
+        for_plot = io.open('../csv_files/graph.csv', 'a', encoding='utf-8')
     for_plot.write(','.join(str(i) for i in range(1, 101)))
     for index, i in enumerate(adj_graph):
         for_plot.write('\n'+str(index+1)+","+','.join(str(j) for j in i))
@@ -32,7 +32,7 @@ def plot_to_file(adj_graph):
 
 def plot_show():
 
-    input_data = pd.read_csv('graph.csv', index_col=0)
+    input_data = pd.read_csv('../csv_files/graph.csv', index_col=0)
 
     G = nkx.DiGraph(input_data.values)
     pos = nkx.spring_layout(G, k=0.15, iterations=20)
@@ -42,7 +42,7 @@ def plot_show():
 
 
 # data set reader
-def read_dataset(dataset_name='dataset.csv'):
+def read_dataset(dataset_name='../csv_files/dataset.csv'):
     dataset_ref = open(dataset_name, 'r')
     return dataset_ref.readlines()
 
@@ -107,7 +107,7 @@ def dataset_avg(sums):
 
 
 # for user orders
-def mean_all(dataset_name='userOrders.csv'):
+def mean_all(dataset_name='../csv_files/userOrders.csv'):
     user_mean_cluster = []
     data_frame = pd.read_csv(dataset_name)
     for taste in tastes:
@@ -119,7 +119,7 @@ def mean_all(dataset_name='userOrders.csv'):
 
 
 def best_node_to_start(adj_graph):
-    df = pd.read_csv('graph.csv', index_col=0)
+    df = pd.read_csv('../csv_files/graph.csv', index_col=0)
     number_of_ones = []
     for i in range(1, 101):
         number_of_ones.append((df.loc[i, :].to_list()).count(1))
@@ -127,8 +127,8 @@ def best_node_to_start(adj_graph):
 
 # adj matrix to lst converter
 def graph_to_list():
-    df=pd.read_csv('graph.csv',index_col=0)
-    file_tmp=io.open('graph_list.csv','w')
+    df=pd.read_csv('../csv_files/graph.csv',index_col=0)
+    file_tmp=io.open('../csv_files/graph_list.csv','w')
     dict_temp={}
     for i in range(100):
         temp=df.iloc[i,:].to_list()
@@ -174,7 +174,7 @@ def node_dist_cal(user_mean_sum, dataset_ref, indexes):
 
 
 # intilisations.iloc([0])
-dataset_ref = read_dataset(dataset_name='dataset.csv')
+dataset_ref = read_dataset(dataset_name='../csv_files/dataset.csv')
 sum_dataset = dataset_sum_row(dataset_ref, size=100)
 mean = dataset_mean(sum_dataset)
 avg = dataset_avg(sum_dataset)
@@ -187,13 +187,13 @@ adj_graph = create_graph_adj(dataset_ref=dataset_ref[1:], arr_size=6, size=100)
 for i in range(0, 100):
     adj_graph[i][i] = 0
 
-user_orders_ref = read_dataset(dataset_name='userOrders.csv')  # plot_show()
+user_orders_ref = read_dataset(dataset_name='../csv_files/userOrders.csv')  # plot_show()
 
 plot_to_file(adj_graph)
 plot_show()
 
 #gets avg for all items to iterate in the graph
-user_mean_sum = mean_all(dataset_name='userOrders.csv')
+user_mean_sum = mean_all(dataset_name='../csv_files/userOrders.csv')
 
 #returns best node haing maximum connections
 node_num = best_node_to_start(adj_graph)
@@ -216,7 +216,7 @@ node_to_start = index_to_find[temp.index(max(temp))]
 # predition
 date_time_str= str(datetime.now())
 user_taste_matched_items = bfs(graph_to_list(), node_to_start,limit=20)
-file_to_show_user = io.open('user menu.csv', 'a', encoding='utf-8')
+file_to_show_user = io.open('../csv_files/user menu.csv', 'a', encoding='utf-8')
 file_to_show_user.write("\n"+date_time_str+"\n")
 file_to_show_user.write('item,sweet,salty,bitter,sour,umami,astringency\n')
 for i in user_taste_matched_items:
