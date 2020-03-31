@@ -113,6 +113,8 @@ def mean_all(dataset_name='../csv_files/userOrders.csv'):
     for taste in tastes:
         temp = data_frame[taste].to_list()
         user_mean_cluster.append((math.fsum(temp))/len(temp))
+    row_sum = math.fsum(user_mean_cluster[1:])
+    user_mean_cluster = [i/row_sum for i in user_mean_cluster[1:]]
     return user_mean_cluster
 
 # returning no of ones
@@ -166,7 +168,7 @@ def node_dist_cal(user_mean_sum, dataset_ref, indexes):
         sum = 0
 
         temp = list(map(float, dataset_ref[i].split(',')))
-        for j in range(7):
+        for j in range(0,6):
             sum += abs(temp[j]-user_mean_sum[j])
         sums_index.append(sum)
 
@@ -211,14 +213,15 @@ temp = node_dist_cal(user_mean_sum, dataset_ref, index_to_find)
 node_to_start = index_to_find[temp.index(max(temp))]
 
 
-
-
 # predition
 date_time_str= str(datetime.now())
-user_taste_matched_items = bfs(graph_to_list(), node_to_start,limit=20)
+user_taste_matched_items = bfs(graph_to_list(), node_to_start,limit=5)
 file_to_show_user = io.open('../csv_files/user menu.csv', 'a', encoding='utf-8')
 file_to_show_user.write("\n"+date_time_str+"\n")
 file_to_show_user.write('item,sweet,salty,bitter,sour,umami,astringency\n')
+print("items are\nitem,sweet,salty,bitter,sour,umami,astringency\n")
 for i in user_taste_matched_items:
+    print(dataset_ref[i])
     file_to_show_user.write(dataset_ref[i])
 file_to_show_user.close()
+print("item are also written to user menu.csv in csv doc")
