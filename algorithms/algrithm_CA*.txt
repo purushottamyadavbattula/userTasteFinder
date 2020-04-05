@@ -12,7 +12,7 @@ Algorithm Customised_A*(start,end):
         Remove node n from open such that f(n) has lowest value
         Add n to closed
         If n == end
-            then return n
+            then retrun ListNodesFromBsetNodeToStart(closed,n)
         neighbours <- Children(n)
         for each m in neighbours
             do switch
@@ -31,9 +31,9 @@ Algorithm Customised_A*(start,end):
                         f(m) <- g(m) + h(m)
                         PropagateImprovement(m)
         node_to_return <- n
-return node_to_return
+return ListNodesFromBsetNodeToStart(closed,n)
 
-PropagateImprovement(m)
+Algo PropagateImprovement(m)
     neighbours <- Children(m)
     for each s in neighbours
         do newGvalue <- g(m) + k(m,s)
@@ -42,6 +42,15 @@ PropagateImprovement(m)
                     g(s) <- newGvalue
                     if s in closed
                         then PropagateImprovement(s)
+
+Algo ListNodesFromBsetNodeToStart(closed,startNode)
+    closed <- reversedList(closed)
+    listOfNodes <- list(startNode)
+    parent <- parent of startNode
+    for node in closed
+        if node is parent
+            add node to listOfNodes
+    return listOfNodes
 ===========================================================
 
 customised Bfs
