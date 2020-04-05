@@ -43,7 +43,7 @@ Algo PropagateImprovement(m)
                     if s in closed
                         then PropagateImprovement(s)
 
-Algoreturn ListNodesFromBestNodeToStart(closed,startNode)
+Algorithm ListNodesFromBestNodeToStart(closed,startNode)
     closed <- reversedList(closed)
     listOfNodes <- list(startNode)
     parent <- parent of startNode

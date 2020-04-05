@@ -60,7 +60,7 @@ def mahatten_cal(node_1, node_2, size=6):
 
 
 
-def create_graph_adj(dataset_ref, size=99, arr_size=6):
+def createGraph(dataset_ref, size=99, arr_size=6):
     intermediate_results = []
     adjency_matrix = np.zeros((size, size), dtype='int')
 
@@ -185,7 +185,7 @@ avg = dataset_avg(sum_dataset)
 mahatten_distance_cutoff = avg if avg < mean else mean
 
 # creates a connected adjency graph shape(100,100) accessed by [99][99]
-adj_graph = create_graph_adj(dataset_ref=dataset_ref[1:], arr_size=6, size=100)
+adj_graph = createGraph(dataset_ref=dataset_ref[1:], arr_size=6, size=100)
 for i in range(0, 100):
     adj_graph[i][i] = 0
 
